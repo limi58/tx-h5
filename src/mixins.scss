@@ -1,0 +1,42 @@
+@mixin absCenter {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+@mixin blockCenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin transform($params){
+  transform: $params;
+  -webkit-transform: $params;
+}
+
+@mixin animation($params) {
+  animation: $params;
+  -webkit-animation: $params;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name}{
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin transform-origin($params) {
+  transform-origin: $params;
+  -webkit-transform-origin: $params;
+}
+@mixin animation-timing-function($params) {
+  animation-timing-function: $params;
+  -webkit-animation-timing-function: $params;
+}
+@mixin transition-timing-function($params) {
+  transition-timing-function: $params;
+  -webkit-transition-timing-function: $params;
+}

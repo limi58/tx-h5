@@ -1,0 +1,185 @@
+@import "./mixins.scss";
+@import "./animations.scss";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  line-height: 0;
+}
+
+html, body, .sectionWrap, .section {
+  height: 100%;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-weight: 400;
+  font-family: "Microsoft Yahei", "微软雅黑", 'simhei';
+}
+
+a{
+  color: inherit;
+}
+a:hover{
+  color: inherit;
+}
+a:active{
+  color: inherit;
+}
+a:visited{
+  color: inherit;
+}
+a:focus{
+  color: inherit;
+}
+
+#root{
+  height: 100%;
+  width: 100%;
+}
+
+.page-btn{
+  position: absolute;
+  top: 650px;
+  width: 200px;
+  @include absCenter;
+  color: #fff;
+  .prev, .next{
+    position: absolute;
+  }
+  .prev{
+    left: 0;
+  }
+  .next{
+    right: 0;
+  }
+}
+
+.loader{
+  background: #f4f4f4;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  color: #4c4c4c;
+  text-align: center;
+  padding-top: 30%;
+  z-index: 11;
+}
+
+footer{
+  position: fixed;
+  bottom: 20px;
+  right: 50px;
+  color: #fff;
+  a{
+    color: #fff;
+  }
+}
+
+.box{
+  width: 320px;
+  overflow: hidden;
+  margin: 150px auto 0 auto;
+  height: 480px;
+  box-shadow: 0 0 40px #333;
+}
+
+.flow{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sectionWrap {
+  transition: all 0s linear;
+  -webkit-transition: all 0s linear;
+  position: relative;
+  width: 100%;
+  max-width: 414px;
+  @include absCenter;
+  .animate-ele-wrap{
+    @include transform(rotateZ(0deg));
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .section {
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    color: #fff;
+    top: 100%;
+    img{
+      width: 100%;
+    }
+    &:first-child {
+      top: 0;
+    }
+    &.currentSection {
+      z-index: 7;
+    }
+    &.moveSection {
+      z-index: 8;
+    }
+    &.panSection {
+      z-index: 9;
+    }
+    &[data-position="top"] {
+      top: -100%;
+    }
+    &[data-position="bottom"] {
+      top: 100%;
+    }
+  }
+  .animate-ele {
+    position: absolute;
+    opacity: 0;
+  }
+}
+
+.arrow {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+  @include animation(arrow 0.5s ease 0s infinite alternate);
+  img {
+    width: 20px;
+  }
+}
+
+.hidden{
+  display: none;
+}
+
+@include keyframes('arrow') {
+  0% {
+    bottom: 20px;
+  }
+  100% {
+    bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  html, body{
+    background: #000;
+  }
+  .box{
+    width: 100%;
+    margin: 0 auto 0 auto;
+    height: 100%;
+  }
+  .arrow{
+    display: block;
+  }
+  footer, .page-btn{
+    display: none;
+  }
+}
